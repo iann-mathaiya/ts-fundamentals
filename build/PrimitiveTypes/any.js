@@ -6,7 +6,7 @@
 let randomValue = 10;
 randomValue = 'Mateo'; // OK
 randomValue = true; // OK
-console.log(randomValue); // OK
+console.log(randomValue); // OK -> runs the last assignment of randomValue
 console.log(randomValue.name); // Logs "undefined" to the console
 randomValue(); // Returns "randomValue is not a function" error
 randomValue.toUpperCase(); // Returns "randomValue is not a function" error
