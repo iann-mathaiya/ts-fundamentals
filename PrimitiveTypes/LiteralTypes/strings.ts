@@ -1,5 +1,5 @@
-let firstName: string = "Mateo";
-let sentence: string = `My name is ${firstName}.
+let sur_name: string = "Mateo";
+let sentence: string = `My name is ${sur_name}.
     I am new to TypeScript.`;
 console.log(sentence);
 
