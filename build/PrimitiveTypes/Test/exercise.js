@@ -57,4 +57,4 @@ function whichMonths(season) {
     }
     return monthsInSeason;
 }
-console.log(whichMonths(Season.Fall));
+console.log(`Fall is between ${whichMonths(Season.Fall)}.`);
