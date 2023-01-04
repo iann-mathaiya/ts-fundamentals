@@ -10,8 +10,11 @@ anotherValue = 'Mateo';
 // anotherValue();                  // Error: Object is of type unknown
 // anotherValue.toUpperCase();      // Error: Object is of type unknown
 // The unknown type is similar to the any type in that any value is assignable to type unknown. 
+// If you need to treat a variable as a different data type you can use a TYPE ASSERTION. 
+// A type assertion tells TypeScript you have performed any special checks that 
+// you need before calling the statement.
 if (typeof anotherValue === "string") {
-    console.log(anotherValue.toUpperCase()); //* Returns MATEO to the console.
+    console.log(anotherValue.toUpperCase()); //* Returns MATEO to the console when string data type is asserted.
 }
 else {
     console.log("Error - A string was expected here."); //* Returns an error message.
