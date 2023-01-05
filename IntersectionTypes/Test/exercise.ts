@@ -35,3 +35,5 @@ let conventionalPayment = calculateConventionalLoanPayment({principal: 30000, in
 
 console.log(interestOnlyPayment);     //* Returns "The interest only loan payment is 125.00" 
 console.log(conventionalPayment);     //* Returns "The conventional loan payment is 237.24" 
+
+// TODO: Search for more use cases for interfaces -> This was fun!
