@@ -115,3 +115,20 @@ interface Sundae extends IceCream {
   whippedCream?: boolean;
   instructions?: string;
 }
+
+let yourIceCream: Sundae = {
+  flavor: 'vanilla',
+  scoops: 2,
+  sauce: 'caramel',
+  nuts: true, 
+  spoon: true
+}
+
+function tooFewScoops(appetizer: Sundae) {
+  if (appetizer.scoops <= 2) {
+      return appetizer.scoops + ' is not enough. Add more scoops!';
+  } else {
+      return 'Your order will be ready soon!';
+  }
+}
+console.log(tooFewScoops({flavor: 'vanilla', scoops: 1, sauce: 'caramel', spoon: true}));

@@ -29,7 +29,7 @@ let myIceCream = {
 let breakfastIceCream = {
     flavor: 'vanilla',
     scoops: 2,
-    cone: false,
+    cone: true,
     spoon: false
 };
 console.log(myIceCream.flavor);
@@ -44,3 +44,19 @@ function tooManyScoops(dessert) {
     }
 }
 console.log(tooManyScoops({ flavor: 'vanilla', scoops: 5, spoon: false }));
+let yourIceCream = {
+    flavor: 'vanilla',
+    scoops: 2,
+    sauce: 'caramel',
+    nuts: true,
+    spoon: true
+};
+function tooFewScoops(appetizer) {
+    if (appetizer.scoops <= 2) {
+        return appetizer.scoops + ' is not enough. Add more scoops!';
+    }
+    else {
+        return 'Your order will be ready soon!';
+    }
+}
+console.log(tooFewScoops({ flavor: 'vanilla', scoops: 1, sauce: 'caramel', spoon: true }));
