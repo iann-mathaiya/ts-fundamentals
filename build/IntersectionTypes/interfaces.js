@@ -11,3 +11,36 @@ let newManager = {
 };
 console.log(newManager);
 console.log(newManager.employeeID + newManager.age); // Adds the employeeID and age as a SUM
+let user = {
+    firstName: "Emil",
+    lastName: "Andersson",
+    fullName() {
+        return this.firstName + " " + this.lastName;
+    }
+};
+// user.firstName = 10;  //* Error - Type 'number' is not assignable to type 'string'
+console.log(user.fullName());
+let myIceCream = {
+    flavor: 'vanilla',
+    scoops: 2,
+    cone: false,
+    spoon: true
+};
+let breakfastIceCream = {
+    flavor: 'vanilla',
+    scoops: 2,
+    cone: false,
+    spoon: false
+};
+console.log(myIceCream.flavor);
+breakfastIceCream.flavor = 'chocolate'; // OK
+// breakfastIceCream.spoon = false           // Not modifiable
+function tooManyScoops(dessert) {
+    if (dessert.scoops >= 4) {
+        return dessert.scoops + ' is too many scoops!';
+    }
+    else {
+        return 'Your order will be ready soon!';
+    }
+}
+console.log(tooManyScoops({ flavor: 'vanilla', scoops: 5, spoon: false }));
