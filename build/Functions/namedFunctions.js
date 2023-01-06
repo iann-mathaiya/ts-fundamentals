@@ -7,3 +7,18 @@ function addNumbers(x, y) {
     return x + y;
 }
 console.log(addNumbers(3, 60));
+function displayAlert(message) {
+    return ('The message is ' + message);
+}
+console.log(displayAlert('awesome!'));
+function sum(inputVal) {
+    let total = 0;
+    for (let count = 0; count < inputVal.length; count++) {
+        if (isNaN(inputVal[count])) {
+            continue;
+        }
+        total += Number(inputVal[count]);
+    }
+    return total;
+}
+console.log(sum([7, 8, 9]));

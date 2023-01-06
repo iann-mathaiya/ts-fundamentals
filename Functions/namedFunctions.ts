@@ -5,6 +5,24 @@
 // This is known as hoisting, meaning you can use the function before you declare it.
 
 function addNumbers(x: number, y: number): number {
-    return x + y;
+  return x + y;
+}
+console.log(addNumbers(3, 60));
+
+function displayAlert(message: string) {
+  return('The message is ' + message);
+} 
+console.log(displayAlert('awesome!'));
+
+function sum(inputVal: number[]): number {        
+  let total: number =  0;
+  for(let count = 0; count < inputVal.length; count++) {
+      if(isNaN(inputVal[count])){
+          continue;
+      }
+      total += Number(inputVal[count]);
   }
-  console.log(addNumbers(3, 60));
+return total;
+}
+
+console.log(sum([7, 8, 9]));

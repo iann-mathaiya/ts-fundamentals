@@ -15,4 +15,4 @@ let totaled = (input) => {
     }
     return total;
 };
-console.log(totaled([1, 2, 3]));
+console.log(totaled([4, 5, 6]));
