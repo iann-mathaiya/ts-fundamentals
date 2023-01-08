@@ -6,6 +6,7 @@ class Car {
     // Also referred to as fields, are the data (or attributes) for the object. 
     // These are the defining characteristics of the object that you can set 
     // or return from your code.
+    private static numberOfCars: number = 0;    //Static properties and methods are shared by all instances of a class.
     private _make: string;
     private _color: string;
     private _doors: number;
@@ -27,6 +28,7 @@ class Car {
         this._make = make;
         this._color = color;
         this._doors = doors;
+        Car.numberOfCars++; // Increments the value of the static property
     }
 
     // Accessors
@@ -74,6 +76,9 @@ class Car {
     turn(direction: 'left' | 'right'): string {
         return `${this.worker()} is turning ${direction}`;
     }
+    public static getNumberOfCars(): number {
+        return Car.numberOfCars;
+    }
 
 }
 
@@ -90,3 +95,10 @@ console.log(myCar3.doors);  // returns 4, the default value
 console.log(myCar1.accelerate(35));
 console.log(myCar1.brake());
 console.log(myCar1.turn('right'));
+
+// Instantiate the Car object with all parameters
+let myCar4 = new Car('Cool Car Company', 'blue', 2);
+// Instantiates the Car object with all parameters
+let myCar5 = new Car('Galaxy Motors', 'blue', 2);
+// Returns 2
+console.log(Car.getNumberOfCars());

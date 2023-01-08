@@ -5,6 +5,10 @@ class Car {
     // The underscore (_) before the property name isn't required in the property declaration 
     // but it provides a way to distinguish the property declaration from the parameters that 
     // are accessible through the constructor, while still tying the two together visually.
+    // This function performs work for the other method functions
+    worker() {
+        return this._make;
+    }
     // Constructor
     // The constructor is a special function used to create and initialize objects based 
     // on the class. When you create a new instance of the class, the constructor creates 
@@ -13,6 +17,7 @@ class Car {
         this._make = make;
         this._color = color;
         this._doors = doors;
+        Car.numberOfCars++; // Increments the value of the static property
     }
     // Accessors
     // Accessors are a type of function that you use to get or set the value of properties. 
@@ -56,14 +61,17 @@ class Car {
     turn(direction) {
         return `${this.worker()} is turning ${direction}`;
     }
-    // This function performs work for the other method functions
-    worker() {
-        return this._make;
+    static getNumberOfCars() {
+        return Car.numberOfCars;
     }
 }
+// Properties
+// Also referred to as fields, are the data (or attributes) for the object. 
+// These are the defining characteristics of the object that you can set 
+// or return from your code.
+Car.numberOfCars = 0; //Static properties and methods are shared by all instances of a class.
 let myCar1 = new Car('Cool Car Company', 'blue', 2); // Instantiates the Car object with all parameters
 console.log(myCar1.color);
-console.log(myCar1._color);
 let myCar2 = new Car('Galaxy Motors', 'red', 3);
 // myCar2.doors = 5 
 let myCar3 = new Car('Galaxy Motors', 'gray');
@@ -71,3 +79,9 @@ console.log(myCar3.doors); // returns 4, the default value
 console.log(myCar1.accelerate(35));
 console.log(myCar1.brake());
 console.log(myCar1.turn('right'));
+// Instantiate the Car object with all parameters
+let myCar4 = new Car('Cool Car Company', 'blue', 2);
+// Instantiates the Car object with all parameters
+let myCar5 = new Car('Galaxy Motors', 'blue', 2);
+// Returns 2
+console.log(Car.getNumberOfCars());
