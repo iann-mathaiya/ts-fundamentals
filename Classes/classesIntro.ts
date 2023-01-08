@@ -6,13 +6,18 @@ class Car {
     // Also referred to as fields, are the data (or attributes) for the object. 
     // These are the defining characteristics of the object that you can set 
     // or return from your code.
-    _make: string;
-    _color: string;
-    _doors: number;
+    private _make: string;
+    private _color: string;
+    private _doors: number;
 
     // The underscore (_) before the property name isn't required in the property declaration 
     // but it provides a way to distinguish the property declaration from the parameters that 
     // are accessible through the constructor, while still tying the two together visually.
+
+    // This function performs work for the other method functions
+    private worker(): string {
+        return this._make;
+    }
 
     // Constructor
     // The constructor is a special function used to create and initialize objects based 
@@ -69,17 +74,12 @@ class Car {
     turn(direction: 'left' | 'right'): string {
         return `${this.worker()} is turning ${direction}`;
     }
-    // This function performs work for the other method functions
-    worker(): string {
-        return this._make;
-    }
 
 }
 
 let myCar1 = new Car('Cool Car Company', 'blue', 2);  // Instantiates the Car object with all parameters
 
 console.log(myCar1.color);
-console.log(myCar1._color);
 
 let myCar2 = new Car('Galaxy Motors', 'red', 3);
 // myCar2.doors = 5 
