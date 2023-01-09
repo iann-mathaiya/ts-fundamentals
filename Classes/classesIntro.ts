@@ -1,7 +1,18 @@
 // Classes enable you to express common object-oriented patterns in a standard way, 
 // making features like inheritance more readable and interoperable. 
 
-class Car {
+// Working with interfaces
+interface Vehicle {
+    make: string;
+    color: string;
+    doors: number;
+    count?: number;
+    accelerate(speed: number): string;
+    brake(): string;
+    turn(direction: 'left' | 'right'): string;
+}
+
+class Car implements Vehicle {
     // Properties
     // Also referred to as fields, are the data (or attributes) for the object. 
     // These are the defining characteristics of the object that you can set 
@@ -146,4 +157,3 @@ console.log(roadster.doors);        // returns the default, 2
 spark.charge();                     // returns "Spark Motors is charging"
 console.log(roadster.brake());      // returns "Tesla Motors is braking with the regenerative braking system"
 console.log(ElectricCar.getNumberOfElectricCars());     // returns 2
-
