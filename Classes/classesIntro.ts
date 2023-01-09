@@ -157,3 +157,42 @@ console.log(roadster.doors);        // returns the default, 2
 spark.charge();                     // returns "Spark Motors is charging"
 console.log(roadster.brake());      // returns "Tesla Motors is braking with the regenerative braking system"
 console.log(ElectricCar.getNumberOfElectricCars());     // returns 2
+
+interface Dog {
+    id?: number;
+    name: string;
+    age: number;
+    breed: string;
+}
+
+// The key difference between interfaces and classes in any programming language is that 
+// classes allow you to define implementation details. Interfaces solely define how data 
+// is structured. Classes allow you to define methods, fields, and properties. Classes also 
+// provide a way to template objects, defining default values.
+
+// A common technique for managing data in a database is to use what's known as 
+// the "active record pattern", meaning the object itself has save, load and similar methods. 
+// We can use the Dog interface defined above to ensure we have the same properties and structure, 
+// while adding the necessary code to perform the operations.
+class DogRecord implements Dog {
+    id: number;
+    name: string;
+    age: number;
+    breed: string;
+
+    constructor({name, age, breed, id = 0}: Dog) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.breed = breed;
+    } 
+
+    // static load(id: number): DogRecord {
+    //     // code to load dog from database
+    //     return dog;
+    // }
+
+    save() {
+                
+    }
+}
