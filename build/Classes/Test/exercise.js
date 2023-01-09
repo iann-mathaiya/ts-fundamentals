@@ -47,10 +47,10 @@ class BuildArray {
     /*  buildArray builds an array of unique random numbers containing the number of items
         based on the number passed to it. The sortOrder parameter determines whether to sort
         the array in ascending or descending order. */
-    buildArray(items, sortOrder) {
+    buildArray() {
         let randomNumbers = [];
         let nextNumber;
-        for (let counter = 0; counter < items; counter++) {
+        for (let counter = 0; counter < this.items; counter++) {
             nextNumber = Math.ceil(Math.random() * (100 - 1));
             if (randomNumbers.indexOf(nextNumber) === -1) {
                 randomNumbers.push(nextNumber);
@@ -59,7 +59,7 @@ class BuildArray {
                 counter--;
             }
         }
-        if (sortOrder === 'ascending') {
+        if (this._sortOrder === 'ascending') {
             return randomNumbers.sort(sortAscending);
         }
         else {
