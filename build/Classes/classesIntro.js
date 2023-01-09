@@ -6,6 +6,7 @@ class Car {
     // but it provides a way to distinguish the property declaration from the parameters that 
     // are accessible through the constructor, while still tying the two together visually.
     // This function performs work for the other method functions
+    // Unlike private functions, protected functions allow subclasses of the base class to use the function.
     worker() {
         return this._make;
     }
@@ -85,3 +86,37 @@ let myCar4 = new Car('Cool Car Company', 'blue', 2);
 let myCar5 = new Car('Galaxy Motors', 'blue', 2);
 // Returns 2
 console.log(Car.getNumberOfCars());
+// Inheritance
+class ElectricCar extends Car {
+    // Constructor
+    constructor(make, color, range, doors = 2) {
+        super(make, color, doors); // Add the super() keyword to include the parameters from the base class. 
+        this._range = range;
+        ElectricCar.numberOfElectricCars++;
+    }
+    // Accessors
+    get range() {
+        return this._range;
+    }
+    set range(range) {
+        this._range = range;
+    }
+    // Methods
+    charge() {
+        console.log(this.worker() + " is charging.");
+    }
+    // Overrides the brake method of the Car class
+    brake() {
+        return `${this.worker()}  is braking with the regenerative braking system.`;
+    }
+    static getNumberOfElectricCars() {
+        return ElectricCar.numberOfElectricCars;
+    }
+}
+ElectricCar.numberOfElectricCars = 0;
+let spark = new ElectricCar('Spark Motors', 'silver', 124, 2);
+let roadster = new ElectricCar('Tesla Motors', 'black', 263);
+console.log(roadster.doors); // returns the default, 2
+spark.charge(); // returns "Spark Motors is charging"
+console.log(roadster.brake()); // returns "Tesla Motors is braking with the regenerative braking system"
+console.log(ElectricCar.getNumberOfElectricCars());

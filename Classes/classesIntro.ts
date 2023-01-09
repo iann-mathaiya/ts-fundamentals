@@ -6,7 +6,7 @@ class Car {
     // Also referred to as fields, are the data (or attributes) for the object. 
     // These are the defining characteristics of the object that you can set 
     // or return from your code.
-    private static numberOfCars: number = 0;    //Static properties and methods are shared by all instances of a class.
+    protected static numberOfCars: number = 0;    //Static properties and methods are shared by all instances of a class.
     private _make: string;
     private _color: string;
     private _doors: number;
@@ -16,7 +16,8 @@ class Car {
     // are accessible through the constructor, while still tying the two together visually.
 
     // This function performs work for the other method functions
-    private worker(): string {
+    // Unlike private functions, protected functions allow subclasses of the base class to use the function.
+    protected worker(): string {
         return this._make;
     }
 
@@ -102,3 +103,47 @@ let myCar4 = new Car('Cool Car Company', 'blue', 2);
 let myCar5 = new Car('Galaxy Motors', 'blue', 2);
 // Returns 2
 console.log(Car.getNumberOfCars());
+
+
+// Inheritance
+class ElectricCar extends Car {
+    // Properties unique to ElectricCar
+    private _range: number;
+    private static numberOfElectricCars: number = 0
+
+    // Constructor
+    constructor(make: string, color: string, range: number, doors = 2 ) {
+        super(make, color, doors);      // Add the super() keyword to include the parameters from the base class. 
+        this._range = range;
+        ElectricCar.numberOfElectricCars++ 
+    }
+
+    // Accessors
+    get range() {
+        return this._range;
+    }
+    set range(range) {
+        this._range = range;
+    }
+
+    // Methods
+    charge() {
+        console.log(this.worker() + " is charging.")
+    }
+    // Overrides the brake method of the Car class
+    brake(): string {
+        return `${this.worker()}  is braking with the regenerative braking system.`
+    }
+    public static getNumberOfElectricCars(): number {
+        return ElectricCar.numberOfElectricCars;
+    }
+
+}
+
+let spark = new ElectricCar('Spark Motors', 'silver', 124, 2);
+let roadster = new ElectricCar('Tesla Motors', 'black', 263);
+console.log(roadster.doors);        // returns the default, 2
+spark.charge();                     // returns "Spark Motors is charging"
+console.log(roadster.brake());      // returns "Tesla Motors is braking with the regenerative braking system"
+console.log(ElectricCar.getNumberOfElectricCars());     // returns 2
+
