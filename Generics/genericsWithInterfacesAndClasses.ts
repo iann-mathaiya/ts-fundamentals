@@ -51,7 +51,7 @@ class processedIdentity<X, Y> implements ProcessedIdentity<X, Y> {
     }
 }
 
-let newProcessor = new processedIdentity<number, string>(100, 'Hello');
+let newProcessor = new processedIdentity<number, string>(100, 'Habari');
 newProcessor.process();           // Displays 'Hello'
 // newProcessor.value = '100';       // Type check error
 newProcessor.value = 100; 
@@ -69,5 +69,5 @@ class checkIdentity<T, U> {
         return this._value
     }
 }
-let bestProcessor = new checkIdentity<number, string>(100, 'Hello');
+let bestProcessor = new checkIdentity<number, string>(100, 'Niatia');
 bestProcessor.getIdentity();      // Displays 'Hello'

@@ -26,7 +26,7 @@ class processedIdentity {
         return this.value;
     }
 }
-let newProcessor = new processedIdentity(100, 'Hello');
+let newProcessor = new processedIdentity(100, 'Habari');
 newProcessor.process(); // Displays 'Hello'
 // newProcessor.value = '100';       // Type check error
 newProcessor.value = 100;
@@ -41,5 +41,5 @@ class checkIdentity {
         return this._value;
     }
 }
-let bestProcessor = new checkIdentity(100, 'Hello');
+let bestProcessor = new checkIdentity(100, 'Niatia');
 bestProcessor.getIdentity(); // Displays 'Hello'
