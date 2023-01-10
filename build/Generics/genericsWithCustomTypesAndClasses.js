@@ -11,7 +11,7 @@ class Automobile {
 class CyberCar extends Automobile {
     constructor() {
         super(...arguments);
-        this.make = 'Electric Car';
+        this.make = 'Cyber Car';
         this.doors = 4;
     }
 }
