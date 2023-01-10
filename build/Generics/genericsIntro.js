@@ -70,3 +70,26 @@ let pets2 = { 1: "cats", 2: "dogs", 3: "parrots", 4: "fish" };
 console.log(getPets(pets1, "fish")); // Returns 6
 // console.log(getPets(pets2, "3"));     // Error
 console.log(getPets(pets2, 3)); // Returns parrots
+// Use the typeof type guard in an if block to check the type of the value parameter
+// before performing an operation, as shown in the following example. TypeScript can 
+// determine from the if statement if the operation will work with the values provided 
+// within the block.
+// You can only use a typeof type guard to check the primitive types string, number, bigint, 
+// function, boolean, symbol, object, and undefined. To check the type of a class, 
+// use an instanceof type guard.
+function identification(value, message) {
+    let result = '';
+    let typeValue = typeof value;
+    if (typeof value === 'number') { // Is it a number?
+        result = value + value; // OK
+    }
+    else if (typeof value === 'string') { // Is it a string?
+        result = value + value; // OK
+    }
+    console.log(`The message is ${message} and the function returns a ${typeValue} value of ${result}.`);
+    return result;
+}
+let numberValue = identification(100, 'Bonjour');
+let stringValue = identification('100', 'Hey');
+console.log(numberValue); // Returns 200
+console.log(stringValue); // Returns 100100
