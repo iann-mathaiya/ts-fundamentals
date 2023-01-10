@@ -12,6 +12,8 @@ let persona2: Identity<string, number> = {
     message: 25
 }
 
+
+// Generic interface as a function type
 interface ProcessIdentity<T, U> {
     (value: T, message: U): T;
 }
@@ -27,3 +29,29 @@ let returnNumber1 = processor(100, 'Hello!');   // OK
 // Tupls always have to follow the order of types they were declared in
 // let returnString1 = processor('Hello!', 100);   // Type check error
 let returnString1 = processor(500, 'Olaaa!');   // OK
+
+
+// Generic interface as a class type
+interface ProcessedIdentity<T, U> {
+    value: T;
+    message: U;
+    process(): T;
+}
+
+class processedIdentity<X, Y> implements ProcessedIdentity<X, Y> {
+    value: X;
+    message: Y;
+    constructor(val: X, msg: Y) {
+        this.value = val;
+        this.message = msg;
+    }
+    process() : X {
+        console.log(this.message);
+        return this.value
+    }
+}
+
+let newProcessor = new processedIdentity<number, string>(100, 'Hello');
+newProcessor.process();           // Displays 'Hello'
+// newProcessor.value = '100';       // Type check error
+newProcessor.value = 100; 
