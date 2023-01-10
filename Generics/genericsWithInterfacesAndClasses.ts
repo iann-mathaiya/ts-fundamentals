@@ -55,3 +55,19 @@ let newProcessor = new processedIdentity<number, string>(100, 'Hello');
 newProcessor.process();           // Displays 'Hello'
 // newProcessor.value = '100';       // Type check error
 newProcessor.value = 100; 
+
+// Generic classes
+class checkIdentity<T, U> {
+    private _value: T;
+    private _message: U;
+    constructor(value: T, message: U) {
+        this._value = value;
+        this._message = message;
+    }
+    getIdentity() : T {
+        console.log(this._message);
+        return this._value
+    }
+}
+let bestProcessor = new checkIdentity<number, string>(100, 'Hello');
+bestProcessor.getIdentity();      // Displays 'Hello'
