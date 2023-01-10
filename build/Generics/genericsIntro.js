@@ -1,0 +1,72 @@
+"use strict";
+// Generics are code templates that you can define and reuse throughout your codebase. 
+// They provide a way to tell functions, classes, or interfaces what type you want to use 
+// when you call it. You can think about this in the same way that arguments are passed to 
+// a function, except a generic enables you to tell the component what type it should expect 
+// at the time it's called.
+// Create generic functions when your code is a function or class that:
+// -> Works with a variety of data types.
+// -> Uses that data type in several places.
+// Generics can:
+// -> Provide more flexibility when working with types.
+// -> Enable code reuse.
+// -> Reduce the need to use the any type.
+// The getArray function generates an array of items of any type.
+function getArray(items) {
+    return new Array().concat(items);
+}
+// Because the any type is used, there's nothing preventing the code from pushing a 
+// string to the numberArray or a number to the stringArray.
+let numberArray = getArray([5, 10, 15, 20]);
+let stringArray = getArray(['Cats', 'Dogs', 'Birds']);
+numberArray.push(25); // OK
+stringArray.push('Rabbits'); // OK
+numberArray.push('This is not a number'); // OK
+stringArray.push(30); // OK
+console.log(numberArray); // [5, 10, 15, 20, 25, "This is not a number"]
+console.log(stringArray); // ["Cats", "Dogs", "Birds", "Rabbits", 30]
+// Generics define one or more type variables to identify the type or types 
+// that you will pass to the component, enclosed in angle brackets (< >).
+function builtArray(items) {
+    return new Array().concat(items);
+}
+// After you specify the type variable, you can use it in place of the type in parameters, 
+// the return type, or anywhere else in the function that you would add a type annotation.
+// The type variable T can be used wherever the type annotation is needed. 
+// In the getArray function, it is used to specify the type for the items parameter, 
+// the function return type, and to return a new Array of items.
+let numbersArray = builtArray([5, 10, 15, 20]);
+numberArray.push(25); // OK
+numberArray.push('This is not a number'); // Generates a compile time type check error
+let stringsArray = builtArray(['Cats', 'Dogs', 'Birds']);
+stringArray.push('Rabbits'); // OK
+stringArray.push(30); // Generates a compile time type check error
+// You are not limited to using a single type variable in your generic components.
+// You can use two generics, T and U, to assign different types 
+// to each parameter and to the return type.
+function identity(value, message) {
+    console.log(value, message);
+    return value;
+}
+let returnNumber = identity(100, 'Hello!');
+let returnString = identity('100', 'Hola!');
+let returnBoolean = identity(true, 'Bonjour!');
+returnNumber = returnNumber * 100; // OK
+function anotherIdentity(value, message) {
+    // let result: T = value + value;    // Error
+    let result = value;
+    console.log(message);
+    return result;
+}
+returnNumber = anotherIdentity(100, 'Hello!'); // OK
+returnString = anotherIdentity('100', 'Hola!'); // OK
+// returnBoolean = anotherIdentity<boolean, string>(true, 'Bonjour!'); // Error: Type 'boolean' does not satisfy the constraint 'ValidTypes'.
+// Using object properties to constrain
+function getPets(pet, key) {
+    return pet[key];
+}
+let pets1 = { cats: 4, dogs: 3, parrots: 1, fish: 6 };
+let pets2 = { 1: "cats", 2: "dogs", 3: "parrots", 4: "fish" };
+console.log(getPets(pets1, "fish")); // Returns 6
+// console.log(getPets(pets2, "3"));     // Error
+console.log(getPets(pets2, 3)); // Returns parrots
