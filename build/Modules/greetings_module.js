@@ -12,3 +12,9 @@ function returnGreeting(greeting) {
     console.log(`The message from Greetings_module is ${greeting}.`);
 }
 exports.returnGreeting = returnGreeting;
+// To import a single export from a module:
+// -> import { <component name> } from '<module name>'
+// To rename an import, use the as keyword:
+// -> import { <component name> as <new name> } from '<module name>'
+// To import the entire module into a single variable, and use it to access the module exports:
+// -> import * as <variable name> from '<module name>'
