@@ -37,3 +37,35 @@ var GreetingsWithLength;
 // returnGreeting('Hello');                     // Returns error
 Greetings.returnGreeting('Bonjour'); // OK
 GreetingsWithLength.returnGreeting('Hola'); // OK
+// Organizing code using nested namespaces
+// Add the export keyword before both namespace names. This allows the namespace 
+// to be accessible outside of the parent namespace.
+var AllGreetings;
+(function (AllGreetings) {
+    let Greetings;
+    (function (Greetings) {
+        function returnGreeting(greeting) {
+            console.log(`The message from namespace Greetings is ${greeting}.`);
+        }
+        Greetings.returnGreeting = returnGreeting;
+    })(Greetings = AllGreetings.Greetings || (AllGreetings.Greetings = {}));
+    let GreetingsWithLength;
+    (function (GreetingsWithLength) {
+        function returnGreeting(greeting) {
+            let greetingLength = getLength(greeting);
+            console.log(`The message from namespace GreetingsWithLength is ${greeting}. It is ${greetingLength} characters long.`);
+        }
+        GreetingsWithLength.returnGreeting = returnGreeting;
+        function getLength(message) {
+            return message.length;
+        }
+    })(GreetingsWithLength = AllGreetings.GreetingsWithLength || (AllGreetings.GreetingsWithLength = {}));
+})(AllGreetings || (AllGreetings = {}));
+AllGreetings.Greetings.returnGreeting('Bonjour Madamoiselle'); // OK
+AllGreetings.GreetingsWithLength.returnGreeting('Holaaa'); // OK
+// TypeScript creates an easy-to-navigate hierarchy of nested namespaces. 
+// But, as your nested namespaces become more complex, you may want to 
+// create an alias to shorten and simplify your code. To do this, 
+// use the import keyword.
+var greet = AllGreetings.Greetings;
+greet.returnGreeting('Hellooo');
