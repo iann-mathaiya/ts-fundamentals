@@ -64,9 +64,44 @@ namespace AllGreetings {
 AllGreetings.Greetings.returnGreeting('Bonjour Madamoiselle');        // OK
 AllGreetings.GreetingsWithLength.returnGreeting('Holaaa');  // OK
 
+import { Interface } from "readline";
 // TypeScript creates an easy-to-navigate hierarchy of nested namespaces. 
 // But, as your nested namespaces become more complex, you may want to 
 // create an alias to shorten and simplify your code. To do this, 
 // use the import keyword.
 import greet = AllGreetings.Greetings;
 greet.returnGreeting('Hellooo');
+
+// Organizing code by using multi-file namespaces
+// You can extend namespaces by sharing them across multiple TypeScript files. 
+// When you have namespaces in multiple files that relate to each other, you must 
+// add reference tags to tell the TypeScript compiler about the relationships 
+// between the files. For example, assume that you have three Typescript files:
+
+    // interfaces.ts, which declares a namespace that contains some interface definitions.
+    // functions.ts, which declares a namespace with functions that implement the interfaces in interfaces.ts.
+    // main.ts, which calls the functions in functions.ts and represents the main code of your application.
+
+// To inform TypeScript of the relationship between interfaces.ts and functions.ts, 
+// you add a reference to interfaces.ts using the triple slash (///) syntax to 
+// the top of functions.ts. And then in main.ts, which has a relationship with 
+// both interfaces.ts and functions.ts, you add a reference to both files.
+// Illustrated below:
+
+// interfaces.ts
+namespace Interfaces {
+
+}
+
+// functions.ts
+/// <reference path="interfaces.ts" />
+namespace Functions {
+    export function functionName() {
+        
+    }
+}
+
+// main.ts
+/// <reference path="interfaces.ts" />
+/// <reference path="functions.ts" />
+let x = Functions.functionName();
