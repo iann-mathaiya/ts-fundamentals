@@ -105,3 +105,17 @@ namespace Functions {
 /// <reference path="interfaces.ts" />
 /// <reference path="functions.ts" />
 let x = Functions.functionName();
+
+// While namespaces are easy to use for simple implementations and do not depend on a module 
+// loader, modules offer some additional benefits that namespaces do not. Modules:
+
+    // -> Declare their dependencies.
+    // -> Provide better code reuse.
+    // -> Offer strong isolation.
+    // -> Hide the internal statements of the module definitions and show only 
+    //      the methods and parameters associated to the declared component.
+    // -> Provide better tooling support for bundling.
+    // -> Are recommended over namespaces for Node.js applications because
+    //      modules are the default.
+    // -> Can resolve top-down JavaScript flow issues because a reference 
+    //      to an external method or class is instantiated only on method invocation.

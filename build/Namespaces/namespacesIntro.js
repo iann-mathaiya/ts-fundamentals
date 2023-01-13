@@ -3,6 +3,7 @@
 // enabling you to group related code together. Namespaces allow you to group 
 // variables, functions, interfaces, or classes related to business rules in 
 // one namespace and security in another.
+Object.defineProperty(exports, "__esModule", { value: true });
 // Code inside a namespace is pulled from the global scope and into 
 // the scope of the namespace. This placement can help you avoid 
 // naming conflicts between components in the global namespace and 
@@ -69,3 +70,27 @@ AllGreetings.GreetingsWithLength.returnGreeting('Holaaa'); // OK
 // use the import keyword.
 var greet = AllGreetings.Greetings;
 greet.returnGreeting('Hellooo');
+// functions.ts
+/// <reference path="interfaces.ts" />
+var Functions;
+(function (Functions) {
+    function functionName() {
+    }
+    Functions.functionName = functionName;
+})(Functions || (Functions = {}));
+// main.ts
+/// <reference path="interfaces.ts" />
+/// <reference path="functions.ts" />
+let x = Functions.functionName();
+// While namespaces are easy to use for simple implementations and do not depend on a module 
+// loader, modules offer some additional benefits that namespaces do not. Modules:
+// -> Declare their dependencies.
+// -> Provide better code reuse.
+// -> Offer strong isolation.
+// -> Hide the internal statements of the module definitions and show only 
+//      the methods and parameters associated to the declared component.
+// -> Provide better tooling support for bundling.
+// -> Are recommended over namespaces for Node.js applications because
+//      modules are the default.
+// -> Can resolve top-down JavaScript flow issues because a reference 
+//      to an external method or class is instantiated only on method invocation.
